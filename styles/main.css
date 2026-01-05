@@ -117,6 +117,80 @@ body::before {
   50% { opacity: 0.6; transform: translateY(-20px) scale(1.5); }
 }
 
+/* REPOMARK:SCOPE: 1 - Add fixed anonymization toggle styling */
+/* ==============================================
+   Anonymization Toggle
+   ============================================== */
+
+.anon-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(18, 18, 26, 0.85);
+  border: var(--border-subtle);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: rgba(124, 58, 237, 0.35);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.3);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(18px);
+}
+
+.toggle-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 /* ==============================================
    Typography
    ============================================== */
@@ -453,6 +527,136 @@ h1, h2, h3 {
   font-weight: 500;
 }
 
+/* REPOMARK:SCOPE: 2 - Add styles for project leaderboards section */
+/* ==============================================
+   Project Leaderboards
+   ============================================== */
+
+.leaderboard-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.leaderboard-tab {
+  padding: 0.6rem 1.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.leaderboard-tab.active {
+  color: white;
+  background: var(--gradient-hero);
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.leaderboard-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leaderboard-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+.leaderboard-rank {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.leaderboard-rank.gold { color: var(--yellow); }
+.leaderboard-rank.silver { color: #C0C0C0; }
+.leaderboard-rank.bronze { color: #CD7F32; }
+.leaderboard-rank.default { color: var(--text-muted); }
+
+.leaderboard-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.leaderboard-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--purple-light);
+  padding: 0.3rem 0.75rem;
+  background: rgba(124, 58, 237, 0.12);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.leaderboard-more {
+  margin: 1.5rem auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.leaderboard-more:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
+}
+
+.leaderboard-more svg {
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.leaderboard-more.expanded svg {
+  transform: rotate(180deg);
+}
+
 /* ==============================================
    Timeline Section
    ============================================== */
@@ -617,12 +821,26 @@ h1, h2, h3 {
 .pipeline-rank.bronze { color: #CD7F32; }
 .pipeline-rank.default { color: var(--text-muted); }
 
-.pipeline-name {
+/* REPOMARK:SCOPE: 3 - Add pipeline meta layout and project name styling */
+.pipeline-meta {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.pipeline-name {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   color: var(--text-primary);
   word-break: break-all;
+}
+
+.pipeline-project {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .pipeline-runs {
@@ -676,6 +894,26 @@ h1, h2, h3 {
   opacity: 0;
   transform: translateY(30px) scale(0.95);
   transition: all 0.5s var(--ease-out-back);
+}
+
+/* REPOMARK:SCOPE: 4 - Add project award badge styling */
+.award-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.6rem;
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--yellow);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 999px;
+}
+
+.award-card.project-award .award-user {
+  gap: 0.5rem;
 }
 
 .award-card.animate-in {
@@ -831,39 +1069,55 @@ h1, h2, h3 {
   line-height: 1.5;
 }
 
+/* REPOMARK:SCOPE: 5 - Replace share section styles for multi-card layout */
 /* ==============================================
    Share Section
    ============================================== */
 
-.share-preview-container {
+.share-cards-grid {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin: 2rem 0 3rem;
-  perspective: 1000px;
+  align-items: flex-start; /* Align tops of cards */
+  gap: 2.5rem;
+  margin: 2rem auto 3rem;
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
+.share-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .share-card {
-  width: 400px;
-  min-width: 400px;
-  padding: 2rem 2.5rem;
+  position: relative;
   background: linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%);
-  border: 2px solid rgba(124, 58, 237, 0.3);
+  border: 2px solid rgba(124, 58, 237, 0.25);
   border-radius: 1.5rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(124, 58, 237, 0.2);
-  transform: rotateX(5deg);
-  transition: transform 0.4s var(--ease-out-expo);
-  overflow: visible;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 2.5rem;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-expo);
 }
 
 .share-card:hover {
-  transform: rotateX(0deg) scale(1.02);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow);
 }
+
+/* Card sizes defined below in consolidated section (280px, 380px, 420px) */
 
 .share-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .share-logo {
@@ -888,6 +1142,31 @@ h1, h2, h3 {
   background: rgba(124, 58, 237, 0.2);
   border: 1px solid rgba(124, 58, 237, 0.3);
   border-radius: 100px;
+}
+
+.share-card-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.share-hero-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.share-hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 .share-card-stats {
@@ -923,6 +1202,40 @@ h1, h2, h3 {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.share-card-detailed-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.share-detailed-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.share-card.detailed .share-stat {
+  text-align: left;
+}
+
+.share-card-highlights {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.share-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .share-card-footer {
   text-align: center;
   padding-top: 1rem;
@@ -933,6 +1246,28 @@ h1, h2, h3 {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+.share-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.share-download-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
 }
 
 .share-actions {
@@ -1019,6 +1354,7 @@ h1, h2, h3 {
   color: var(--purple);
 }
 
+/* REPOMARK:SCOPE: 6 - Update responsive rules for leaderboards and share cards */
 /* ==============================================
    Responsive Design
    ============================================== */
@@ -1032,12 +1368,34 @@ h1, h2, h3 {
     height: 150px;
   }
 
+  .leaderboard-tabs {
+    gap: 0.5rem;
+  }
+
+  .leaderboard-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .share-cards-grid {
+    gap: 1.5rem;
+  }
+
+  .share-card {
+    padding: 2rem;
+  }
+
   .share-card-stats {
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .share-stat-value {
     font-size: 1.25rem;
+  }
+
+  .share-card.detailed {
+    padding: 2rem;
   }
 
   .awards-grid {
@@ -1054,6 +1412,16 @@ h1, h2, h3 {
     font-size: clamp(2.5rem, 15vw, 4rem);
   }
 
+  .anon-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .toggle-label {
+    font-size: 0.65rem;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
@@ -1061,6 +1429,33 @@ h1, h2, h3 {
 
   .stat-card {
     padding: 1.5rem 1rem;
+  }
+
+  .leaderboard-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .leaderboard-metric {
+    align-self: flex-start;
+  }
+
+  .share-card {
+    padding: 1.5rem;
+  }
+
+  .share-card-stats {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .share-stat-divider {
+    display: none;
+  }
+
+  .share-card-highlights {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .pipeline-item {
@@ -1118,3 +1513,545 @@ h1, h2, h3 {
 .timeline-bar:nth-child(10) { transition-delay: 0.5s; }
 .timeline-bar:nth-child(11) { transition-delay: 0.55s; }
 .timeline-bar:nth-child(12) { transition-delay: 0.6s; }
+
+/* ==============================================
+   Anonymization Toggle
+   ============================================== */
+
+.anon-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(18, 18, 26, 0.9);
+  backdrop-filter: blur(12px);
+  border: var(--border-subtle);
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.anon-toggle:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: var(--shadow-glow);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 24px;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--purple);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+  background: white;
+}
+
+.toggle-icon {
+  font-size: 1rem;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.anon-toggle.active .toggle-icon {
+  transform: rotate(-15deg);
+}
+
+.toggle-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 110px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.anon-toggle.active .toggle-label {
+  color: var(--purple-light);
+}
+
+/* ==============================================
+   Project Leaderboards Section
+   ============================================== */
+
+.leaderboards {
+  /* Uses standard section styling */
+}
+
+.leaderboards.hidden {
+  display: none;
+}
+
+.leaderboard-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.leaderboard-tab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.leaderboard-tab:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(124, 58, 237, 0.3);
+  color: var(--text-primary);
+}
+
+.leaderboard-tab.active {
+  background: var(--gradient-hero);
+  border-color: transparent;
+  color: white;
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 1rem;
+  transition: all 0.3s var(--ease-out-expo);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.leaderboard-row.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leaderboard-row:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateX(4px);
+}
+
+.leaderboard-rank {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.leaderboard-rank.gold {
+  color: var(--yellow);
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+}
+
+.leaderboard-rank.silver {
+  color: #C0C0C0;
+  text-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
+}
+
+.leaderboard-rank.bronze {
+  color: #CD7F32;
+  text-shadow: 0 0 20px rgba(205, 127, 50, 0.3);
+}
+
+.leaderboard-rank.default {
+  color: var(--text-muted);
+}
+
+.leaderboard-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.leaderboard-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--purple-light);
+  padding: 0.25rem 0.75rem;
+  background: rgba(124, 58, 237, 0.1);
+  border-radius: 100px;
+}
+
+.leaderboard-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto 0;
+  padding: 0.75rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: var(--border-subtle);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.leaderboard-more:hover {
+  color: var(--purple-light);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.leaderboard-more.expanded svg {
+  transform: rotate(180deg);
+}
+
+.leaderboard-more svg {
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.leaderboard-more.hidden {
+  display: none;
+}
+
+/* Leaderboard row staggered animation */
+.leaderboard-row:nth-child(1) { transition-delay: 0.05s; }
+.leaderboard-row:nth-child(2) { transition-delay: 0.1s; }
+.leaderboard-row:nth-child(3) { transition-delay: 0.15s; }
+.leaderboard-row:nth-child(4) { transition-delay: 0.2s; }
+.leaderboard-row:nth-child(5) { transition-delay: 0.25s; }
+.leaderboard-row:nth-child(6) { transition-delay: 0.3s; }
+.leaderboard-row:nth-child(7) { transition-delay: 0.35s; }
+.leaderboard-row:nth-child(8) { transition-delay: 0.4s; }
+
+/* ==============================================
+   Project Awards Badge
+   ============================================== */
+
+.award-card.project-award {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.award-card.project-award::before {
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+}
+
+.award-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--yellow);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.award-project-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--purple-light);
+  margin-top: 0.5rem;
+}
+
+/* ==============================================
+   Pipeline Project Label
+   ============================================== */
+
+.pipeline-project {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+}
+
+/* ==============================================
+   Share Cards Grid (consolidated - uses flexbox above)
+   ============================================== */
+
+/* .share-card-wrapper already defined above */
+
+/* Base share card styles */
+.share-card {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%);
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(124, 58, 237, 0.15);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.share-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(124, 58, 237, 0.25);
+}
+
+/* Minimal Card (Square) */
+.share-card.minimal {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.share-card.minimal .share-card-header {
+  justify-content: center;
+}
+
+.share-card-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.share-hero-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.share-hero-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Standard Card (Landscape) */
+.share-card.standard {
+  width: 380px;
+  min-height: 240px;
+}
+
+.share-card.standard .share-card-header {
+  margin-bottom: 1.5rem;
+}
+
+.share-card.standard .share-card-stats {
+  margin-bottom: 1.5rem;
+}
+
+/* Detailed Card (Larger) */
+.share-card.detailed {
+  width: 420px;
+  min-height: 320px;
+}
+
+.share-card.detailed .share-card-header {
+  margin-bottom: 1.25rem;
+}
+
+.share-card-detailed-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.share-detailed-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.share-detailed-row .share-stat {
+  text-align: center;
+  min-width: 100px;
+}
+
+.share-detailed-row .share-stat-value {
+  font-size: 1.75rem;
+}
+
+.share-card-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.75rem;
+  background: rgba(124, 58, 237, 0.1);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.share-highlight {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Share card header/footer shared styles */
+.share-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.share-card-footer {
+  text-align: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Share download button */
+.share-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.share-download-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
+}
+
+.share-download-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==============================================
+   Responsive - New Components
+   ============================================== */
+
+@media (max-width: 768px) {
+  .anon-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .toggle-label {
+    font-size: 0.65rem;
+    min-width: auto;
+  }
+
+  .toggle-icon {
+    display: none;
+  }
+
+  .leaderboard-tabs {
+    gap: 0.375rem;
+  }
+
+  .leaderboard-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .share-cards-grid {
+    gap: 1.5rem;
+  }
+
+  .share-card.minimal {
+    width: 240px;
+    height: 240px;
+  }
+
+  .share-hero-value {
+    font-size: 2.5rem;
+  }
+
+  .share-card.standard {
+    width: 320px;
+    min-height: 200px;
+  }
+
+  .share-card.detailed {
+    width: 340px;
+    min-height: 280px;
+  }
+
+  .share-detailed-row .share-stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .anon-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .share-card.minimal {
+    width: 220px;
+    height: 220px;
+  }
+
+  .share-hero-value {
+    font-size: 2rem;
+  }
+
+  .share-card.standard,
+  .share-card.detailed {
+    width: 100%;
+    max-width: 300px;
+  }
+}

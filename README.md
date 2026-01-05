@@ -4,11 +4,18 @@
 
 Generate your team's personalized "Year in Review" for your ZenML project — see your pipeline stats, top contributors, fun awards, and more.
 
+## Prerequisites
+
+- Python 3.9+
+- Node.js (optional, for `npx serve`)
+
 ## Quick Start
 
-### 1. Set up your environment
+### 1. Clone and set up your environment
 
 ```bash
+git clone https://github.com/zenml-io/zenml-wrapped.git
+cd zenml-wrapped
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt

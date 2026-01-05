@@ -22,8 +22,8 @@ extract_metrics.py  →  data/metrics.json  →  index.html + scripts/app.js
 
 ```bash
 # Setup
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+uv sync
+source .venv/bin/activate
 
 # Connect to ZenML
 zenml login

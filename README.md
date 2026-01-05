@@ -7,6 +7,7 @@ Generate your team's personalized "Year in Review" for your ZenML project — se
 ## Prerequisites
 
 - Python 3.9+
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or pip
 - Node.js (optional, for `npx serve`)
 
 ## Quick Start
@@ -16,10 +17,19 @@ Generate your team's personalized "Year in Review" for your ZenML project — se
 ```bash
 git clone https://github.com/zenml-io/zenml-wrapped.git
 cd zenml-wrapped
+uv sync
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+<details>
+<summary>Alternative: using pip</summary>
+
+```bash
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install .
 ```
+</details>
 
 ### 2. Connect to your ZenML workspace
 

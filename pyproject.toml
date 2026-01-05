@@ -1,0 +1,8 @@
+[project]
+name = "zenml-wrapped"
+version = "0.1.0"
+description = "Generate your team's ZenML year-in-review"
+requires-python = ">=3.9"
+dependencies = [
+    "zenml>=0.93.0",
+]

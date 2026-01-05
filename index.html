@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenML 2025 Unwrapped</title>
+
+  <!-- Fonts: Syne for display, JetBrains Mono for numbers, DM Sans for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <img src="https://cdn.prod.website-files.com/65264f6bf54e751c3a776db1/65c9f71ef81c034b070e8b97_02%20-%20Logo%20(2)%20(1).png" alt="ZenML" class="hero-logo">
+        <span class="badge-year">2025</span>
+        <span class="badge-text">Year in Review</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Your ZenML</span>
+        <span class="title-line gradient-text">Unwrapped</span>
+      </h1>
+      <p class="hero-subtitle">A year of pipelines, models, and ML magic.</p>
+      <button class="cta-button" id="startJourney">
+        <span>Discover Your Story</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Big Numbers Section -->
+  <section class="section big-numbers" id="bigNumbers">
+    <div class="section-header">
+      <span class="section-eyebrow">The Numbers</span>
+      <h2 class="section-title">2025 was <span class="gradient-text">massive</span></h2>
+      <p class="section-subtitle">You shipped more ML than ever before.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card primary" data-animate>
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div class="stat-value" data-counter="0" id="totalRuns">0</div>
+        <div class="stat-label">Pipeline Runs</div>
+        <div class="stat-glow"></div>
+      </div>
+
+      <div class="stat-card" data-animate>
+        <div class="stat-icon success">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+        </div>
+        <div class="stat-value"><span data-counter="0" id="successRate">0</span><span class="stat-unit">%</span></div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+
+      <div class="stat-card" data-animate>
+        <div class="stat-icon pipelines">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </div>
+        <div class="stat-value" data-counter="0" id="uniquePipelines">0</div>
+        <div class="stat-label">Unique Pipelines</div>
+      </div>
+
+      <div class="stat-card" data-animate>
+        <div class="stat-icon artifacts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+          </svg>
+        </div>
+        <div class="stat-value" data-counter="0" id="artifactsProduced">0</div>
+        <div class="stat-label">Artifacts Created</div>
+      </div>
+
+      <div class="stat-card" data-animate>
+        <div class="stat-icon models">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="stat-value" data-counter="0" id="modelsCreated">0</div>
+        <div class="stat-label">Models Created</div>
+      </div>
+
+      <div class="stat-card" data-animate>
+        <div class="stat-icon users">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="stat-value" data-counter="0" id="uniqueUsers">0</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="section timeline" id="timeline">
+    <div class="section-header">
+      <span class="section-eyebrow">Activity</span>
+      <h2 class="section-title">Your Year in <span class="gradient-text">Runs</span></h2>
+      <p class="section-subtitle">Every bar is a month of ML progress.</p>
+    </div>
+
+    <div class="timeline-container">
+      <div class="timeline-chart" id="timelineChart">
+        <!-- Bars will be generated by JS -->
+      </div>
+      <div class="timeline-labels">
+        <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
+        <span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+        <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+      </div>
+    </div>
+
+    <div class="timeline-highlights">
+      <div class="highlight-card" data-animate>
+        <div class="highlight-icon">🚀</div>
+        <div class="highlight-content">
+          <div class="highlight-value" id="busiestMonth">May</div>
+          <div class="highlight-label">Busiest Month</div>
+        </div>
+      </div>
+      <div class="highlight-card" data-animate>
+        <div class="highlight-icon">📅</div>
+        <div class="highlight-content">
+          <div class="highlight-value" id="busiestDay">Thursday</div>
+          <div class="highlight-label">Most Active Day</div>
+        </div>
+      </div>
+      <div class="highlight-card" data-animate>
+        <div class="highlight-icon">⏰</div>
+        <div class="highlight-content">
+          <div class="highlight-value" id="busiestHour">12:00</div>
+          <div class="highlight-label">Peak Hour</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Pipelines Section -->
+  <section class="section pipelines" id="pipelines">
+    <div class="section-header">
+      <span class="section-eyebrow">Favorites</span>
+      <h2 class="section-title">Top <span class="gradient-text">Pipelines</span></h2>
+      <p class="section-subtitle">Your most-run workflows of the year.</p>
+    </div>
+
+    <div class="pipelines-list" id="pipelinesList">
+      <!-- Pipeline items will be generated by JS -->
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section class="section awards" id="awards">
+    <div class="section-header">
+      <span class="section-eyebrow">Recognition</span>
+      <h2 class="section-title">The <span class="gradient-text">Honors Roll</span></h2>
+      <p class="section-subtitle">Celebrating the legends of your ML team.</p>
+    </div>
+
+    <div class="awards-grid" id="awardsGrid">
+      <!-- Award cards will be generated by JS -->
+    </div>
+  </section>
+
+  <!-- Fun Facts Section -->
+  <section class="section funfacts" id="funfacts">
+    <div class="section-header">
+      <span class="section-eyebrow">Did You Know?</span>
+      <h2 class="section-title">Fun <span class="gradient-text">Facts</span></h2>
+    </div>
+
+    <div class="facts-container" id="factsContainer">
+      <!-- Facts will be generated by JS -->
+    </div>
+  </section>
+
+  <!-- Share Section -->
+  <section class="section share" id="share">
+    <div class="section-header">
+      <span class="section-eyebrow">Spread the Word</span>
+      <h2 class="section-title">Share Your <span class="gradient-text">Story</span></h2>
+      <p class="section-subtitle">Show off your year in pipelines.</p>
+    </div>
+
+    <div class="share-preview-container">
+      <div class="share-card" id="shareCard">
+        <div class="share-card-header">
+          <div class="share-logo">
+            <img src="https://cdn.prod.website-files.com/65264f6bf54e751c3a776db1/65c9f71ef81c034b070e8b97_02%20-%20Logo%20(2)%20(1).png" alt="ZenML" class="share-logo-img">
+            <span>2025</span>
+          </div>
+          <span class="share-badge">Unwrapped</span>
+        </div>
+        <div class="share-card-stats">
+          <div class="share-stat">
+            <span class="share-stat-value" id="shareRuns">2,510</span>
+            <span class="share-stat-label">Runs</span>
+          </div>
+          <div class="share-stat-divider"></div>
+          <div class="share-stat">
+            <span class="share-stat-value" id="shareSuccess">58.8%</span>
+            <span class="share-stat-label">Success</span>
+          </div>
+          <div class="share-stat-divider"></div>
+          <div class="share-stat">
+            <span class="share-stat-value" id="sharePipelines">155</span>
+            <span class="share-stat-label">Pipelines</span>
+          </div>
+        </div>
+        <div class="share-card-footer">
+          <span class="share-hashtag">#ZenML #MLOps #2025Unwrapped</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="share-actions">
+      <button class="share-button primary" id="downloadCard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+        </svg>
+        <span>Download Card</span>
+      </button>
+      <button class="share-button" id="copyLink">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span>Copy Stats</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://cdn.prod.website-files.com/65264f6bf54e751c3a776db1/65c9f71ef81c034b070e8b97_02%20-%20Logo%20(2)%20(1).png" alt="ZenML" class="footer-logo-img">
+      </div>
+      <p class="footer-text">Made with pipelines and love. Here's to 2026!</p>
+      <a href="https://zenml.io" class="footer-link" target="_blank">zenml.io</a>
+    </div>
+  </footer>
+
+  <!-- html2canvas for share card generation -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

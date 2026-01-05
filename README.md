@@ -2,7 +2,7 @@
 
 ![](assets/cover.png)
 
-Generate your team's personalized "Year in Review" for your ZenML project — see your pipeline stats, top contributors, fun awards, and more.
+Generate your team's personalized "Year in Review" for your entire ZenML workspace — see pipeline stats across all projects, top contributors, fun awards, and more.
 
 ## Prerequisites
 
@@ -39,19 +39,25 @@ zenml login
 
 This will prompt you to select and authenticate with your ZenML server.
 
-**Optional:** If you want metrics for a specific project (not the default), run:
-
-```bash
-zenml project set <your-project-name>
-```
-
 ### 3. Extract your metrics
 
 ```bash
 python extract_metrics.py
 ```
 
-This generates `data/metrics.json` with all your 2025 pipeline data.
+This extracts metrics from **all projects** in your workspace and generates `data/metrics.json`.
+
+**Options:**
+```bash
+# Extract for a different year
+python extract_metrics.py --year 2024
+
+# Exclude specific projects (comma-separated)
+python extract_metrics.py --exclude-projects "test-project,sandbox"
+
+# Custom output path
+python extract_metrics.py --output custom/path.json
+```
 
 ### 4. View your Wrapped
 
@@ -71,9 +77,20 @@ Then open http://localhost:3000
 
 ## What You'll See
 
-- **The Numbers** — Total runs, success rate, pipelines, artifacts, and models
+- **The Numbers** — Total runs, success rate, pipelines, artifacts, and models across your workspace
+- **Project Leaderboards** — Rank projects by runs, success rate, or team size
 - **Time Analytics** — Your busiest month, day, and hour
-- **Top Pipelines** — Your most-run pipelines
-- **Awards** — Fun recognition like "Pipeline Overlord", "Night Owl", "Weekend Warrior"
+- **Top Pipelines** — Your most-run pipelines (with project labels)
+- **Awards** — Fun recognition like "Pipeline Overlord", "Night Owl", "Weekend Warrior", plus project awards
 - **Team Stats** — Per-user breakdown with individual achievements
 - **Fun Facts** — Personalized insights about your ML journey
+- **Share Cards** — Three downloadable card variants (Minimal, Standard, Detailed) for social sharing
+
+## Anonymization
+
+Use the 🔒 toggle in the top-right corner to switch between real names and codenames. This lets you share your stats publicly without revealing sensitive project or pipeline names.
+
+When anonymized:
+- Projects get codenames like "Nebula Station", "Phoenix Rising"
+- Pipelines get codenames like "Operation Thunderbolt", "Protocol Zephyr"
+- Fun facts switch to generic versions without specific names

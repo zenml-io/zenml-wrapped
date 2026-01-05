@@ -6,7 +6,7 @@ Generate your team's personalized "Year in Review" for your ZenML project — se
 
 ## Prerequisites
 
-- Python 3.9+
+- Python 3.10+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or pip
 - Node.js (optional, for `npx serve`)
 

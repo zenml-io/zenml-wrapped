@@ -54,9 +54,6 @@ python extract_metrics.py --year 2024
 
 # Exclude specific projects (comma-separated)
 python extract_metrics.py --exclude-projects "test-project,sandbox"
-
-# Custom output path
-python extract_metrics.py --output custom/path.json
 ```
 
 ### 4. View your Wrapped
